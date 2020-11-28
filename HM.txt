@@ -1,48 +1,43 @@
 1. Инициализируем гит репозиторий.
+   $ git init
+
 2. Создаем файл index.html
+   $ touch index.html
+
 3. Изменяем статус файла чтобы гит его трекал.
-4. Делаем коммит с сообщением "initial commit"
-5. Добавляем remote repository gitthub
-6. Делаем пуш в удаленный репозиторий.
-7. Создаем файл style.css и добавляем его в предыдущий коммит.
-8. Пушим на сервер.
-9. Меняем файл style.css
-10. Откатываем изменения style.css
-11. Делаем копию папки и из новой папки создаем новую ветку new-branch
-12. Создаем файл main.js и делаем с ним коммит и пуш
-13. Переходим в первоначальную папку и спуливаем изменения из ветки new-branch в ветку master.
-
-
-1. git init
-2. touch index.html
-3. добавил <h1>Hello World</h1> в index.html
-   git status 
+   добавил <h1>Hello World</h1> в index.html
+   $ git status 
    	Untracked files:
-  		(use "git add <file>..." to include in what will be committed)
-        	HM.txt
-        	index.html
+  	(use "git add <file>..." to include in what will be committed)
+        HM.txt
+        index.html
 
-4. git add .
-   git status
+4. Делаем коммит с сообщением "initial commit" 
+   Сорри я протупил и сделал с коммит с сообщением "HomeWork"
+   $ git add .
+   $ git status
 	Changes to be committed:
-  		(use "git rm --cached <file>..." to unstage)
-        	new file:   HM.txt
-        	new file:   index.html
+  	(use "git rm --cached <file>..." to unstage)
+        new file:   HM.txt
+        new file:   index.html
    
-   git commit -m "HomeWork"
+   $ git commit -m "HomeWork"
 	[master (root-commit) 443bc0d] HomeWork
  	2 files changed, 11 insertions(+)
  	create mode 100644 HM.txt
  	create mode 100644 index.html
 
-   git status
+   $ git status
 	nothing to commit, working tree clean
 
 
-5. Create "New repository" in my gitHub account "KazisMurata/GitHomeWork"
-   git remote add origin https://github.com/KazisMurata/GitHomeWork
+5. Добавляем remote repository gitthub
+   Create "New repository" in my gitHub account "KazisMurata/GitHomeWork"
+
+   $ git remote add origin https://github.com/KazisMurata/GitHomeWork
    
-6. git push -u origin master
+6. Делаем пуш в удаленный репозиторий.
+   $ git push -u origin master
    	Enumerating objects: 4, done.
    	Counting objects: 100% (4/4), done.
    	Delta compression using up to 8 threads
@@ -53,10 +48,13 @@
    	* [new branch]      master -> master
    	Branch 'master' set up to track remote branch 'master' from 'origin'.
 
-7. touch style.css
+7. Создаем файл style.css и добавляем его в предыдущий коммит.
+   $ touch style.css
+
    Add "styles" in style.css
    Add "<link rel="stylesheet" href="style.css">" in index.html
-   git status
+
+   $ git status
 	Changes not staged for commit:
   	(use "git add <file>..." to update what will be committed)
   	(use "git restore <file>..." to discard changes in working directory)
@@ -67,13 +65,13 @@
         style.css
 
 
-   git add .
+   $ git add .
 	Changes to be committed:
   	(use "git restore --staged <file>..." to unstage)
         modified:   index.html
         new file:   style.css
 	
-   git commit --amend -m "HomeWork"
+   $ git commit --amend -m "HomeWork"
   	[master 5a156ac] HomeWork
  	Date: Fri Nov 27 15:55:12 2020 +0200
 	3 files changed, 15 insertions(+)
@@ -81,7 +79,86 @@
  	create mode 100644 index.html
  	create mode 100644 style.css
 
-8.  git push
+8. Пушим на сервер. 
+   $ git push
+
+9. Меняем файл style.css
+   $ git status
+	Changes not staged for commit:
+  	(use "git add <file>..." to update what will be committed)
+ 	(use "git restore <file>..." to discard changes in working directory)
+        modified:   style.css
+
+10. Откатываем изменения style.css 
+    $ git checkout style.css
+
+11. Делаем копию папки и из новой папки создаем новую ветку new-branch
+    Create new Folder "git test 2"
+
+    $ git init
+    $ git clone https://github.com/KazisMurata/GitHomeWork.git  
+    $ git branch new-branch
+    $ git branch
+	* master
+ 	  new-branch
+
+    $ git checkout new-branch
+	Switched to branch 'new-branch'
+
+    $ git branch
+  	  master
+	* new-branch
+
+    $ git status
+	On branch new-branch
+	nothing to commit, working tree clean
+
+12. Создаем файл main.js и делаем с ним коммит и пуш
+	
+    $ touch main.js
+    $ git status
+	On branch new-branch
+	Changes to be committed:
+  	(use "git restore --staged <file>..." to unstage)
+        new file:   main.js
+
+    $ git add .
+    $ git commit -m "Update"
+    $ git push -u origin new-branch
+
+13. Переходим в первоначальную папку и спуливаем изменения из ветки new-branch в ветку master.
+
+    $ git pull
+	remote: Enumerating objects: 9, done.
+	remote: Counting objects: 100% (9/9), done.
+	remote: Compressing objects: 100% (4/4), done.
+	remote: Total 7 (delta 1), reused 7 (delta 1), pack-reused 0
+	Unpacking objects: 100% (7/7), done.
+	From https://github.com/KazisMurata/GitHomeWork
+ 	* [new branch]      new-branch -> origin/new-branch
+	Already up to date.
+    
+    $ git pull origin new-branch 
+               ИЛИ
+    $ git merge new-branch
+	From https://github.com/KazisMurata/GitHomeWork
+ 	* branch            new-branch -> FETCH_HEAD
+	Updating 94d8d63..df2fb8a
+	Fast-forward
+ 	index.html | 1 +
+ 	main.js    | 1 +
+ 	2 files changed, 2 insertions(+)
+ 	create mode 100644 main.js
+
+    $ git status
+	On branch master
+	Your branch is ahead of 'origin/master' by 2 commits.
+  	(use "git push" to publish your local commits)
+
+     $ git push
+	Total 0 (delta 0), reused 0 (delta 0)
+	To https://github.com/KazisMurata/GitHomeWork
+   	94d8d63..df2fb8a  master -> master
 
 
 	    	
