@@ -1,0 +1,92 @@
+1. Инициализируем гит репозиторий.
+2. Создаем файл index.html
+3. Изменяем статус файла чтобы гит его трекал.
+4. Делаем коммит с сообщением "initial commit"
+5. Добавляем remote repository gitthub
+6. Делаем пуш в удаленный репозиторий.
+7. Создаем файл style.css и добавляем его в предыдущий коммит.
+8. Пушим на сервер.
+9. Меняем файл style.css
+10. Откатываем изменения style.css
+11. Делаем копию папки и из новой папки создаем новую ветку new-branch
+12. Создаем файл main.js и делаем с ним коммит и пуш
+13. Переходим в первоначальную папку и спуливаем изменения из ветки new-branch в ветку master.
+
+
+1. git init
+2. touch index.html
+3. добавил <h1>Hello World</h1> в index.html
+   git status 
+   	Untracked files:
+  		(use "git add <file>..." to include in what will be committed)
+        	HM.txt
+        	index.html
+
+4. git add .
+   git status
+	Changes to be committed:
+  		(use "git rm --cached <file>..." to unstage)
+        	new file:   HM.txt
+        	new file:   index.html
+   
+   git commit -m "HomeWork"
+	[master (root-commit) 443bc0d] HomeWork
+ 	2 files changed, 11 insertions(+)
+ 	create mode 100644 HM.txt
+ 	create mode 100644 index.html
+
+   git status
+	nothing to commit, working tree clean
+
+
+5. Create "New repository" in my gitHub account "KazisMurata/GitHomeWork"
+   git remote add origin https://github.com/KazisMurata/GitHomeWork
+   
+6. git push -u origin master
+   	Enumerating objects: 4, done.
+   	Counting objects: 100% (4/4), done.
+   	Delta compression using up to 8 threads
+   	Compressing objects: 100% (3/3), done.
+   	Writing objects: 100% (4/4), 418 bytes | 418.00 KiB/s, done.
+   	Total 4 (delta 0), reused 0 (delta 0)
+   	To https://github.com/KazisMurata/GitHomeWork
+   	* [new branch]      master -> master
+   	Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+7. touch style.css
+   Add "styles" in style.css
+   Add "<link rel="stylesheet" href="style.css">" in index.html
+   git status
+	Changes not staged for commit:
+  	(use "git add <file>..." to update what will be committed)
+  	(use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+	Untracked files:
+  	(use "git add <file>..." to include in what will be committed)
+        style.css
+
+
+   git add .
+	Changes to be committed:
+  	(use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+        new file:   style.css
+	
+   git commit --amend -m "HomeWork"
+  	[master 5a156ac] HomeWork
+ 	Date: Fri Nov 27 15:55:12 2020 +0200
+	3 files changed, 15 insertions(+)
+ 	create mode 100644 HM.txt
+ 	create mode 100644 index.html
+ 	create mode 100644 style.css
+
+8.  git push
+
+
+	    	
+
+
+
+
+
